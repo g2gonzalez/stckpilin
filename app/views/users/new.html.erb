@@ -1,0 +1,17 @@
+<h1>Signup!</h1>
+
+<%= form_for @user do |f| %> <!-- form_for :user, url: '/users' do |f| -->
+
+  Username: <br>
+  <%= f.text_field :username %><br>
+  Email: <br>
+  <%= f.text_field :email %><br>
+  Password: <br>
+  <%= f.password_field :password %><br>
+  Password Confirmation: <br>
+  <%= f.password_field :password_confirmation %><br>
+  Your State: <br>
+  <%= f.collection_select :location_id, Location.all, :id, :state, {}, {multiple: false} %><br><br>
+  <%= f.submit "Submit" %>
+
+<% end %>
