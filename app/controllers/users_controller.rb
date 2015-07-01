@@ -9,15 +9,15 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Your account was successfully created."
+      redirect_to root_path, flash: { success: "Welcome #{current_user.username} your account was successfully created." }
     else
-      redirect_to signup_path
+      redirect_to signup_path, flash: { warning: "Hmmm that wasn't right. Try again." }
     end
   end
 
-private
-  def user_params
-    params.require(:user).permit(:username, :email, :location_id, :password, :password_confirmation)
-  end
+  private
+    def user_params
+      params.require(:user).permit(:username, :email, :location_id, :password, :password_confirmation)
+    end
 
 end
