@@ -2,10 +2,10 @@
 
   <% if msg == "See ya later alligator!" %>
     <% name = "danger" %>
-  <% elsif msg == "Welcome back #{current_user.username}!" %>
-    <% name = "success" %>
+  <% elsif msg == "Hmmm that wasn't right. Try again." %>
+    <% name = "warning" %>
   <% else %>
-    <% name = "info" %>
+    <% name = "success" %>
   <% end %>
 
   <%= content_tag(:div, class: "alert alert-#{name} text-center") do %>

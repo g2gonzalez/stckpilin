@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       redirect_to root_path, notice: "Welcome back #{current_user.username}!"
     else
       # If user's login doesn't work, send them back to the login form.
-      redirect_to login_path
+      redirect_to login_path, notice: "Hmmm that wasn't right. Try again."
     end
   end
 
