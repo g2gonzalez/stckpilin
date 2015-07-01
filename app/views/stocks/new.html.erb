@@ -2,6 +2,7 @@
 
 <%= form_for @stock do |f| %>
 
+  <%= f.hidden_field :user_id, value: session[:user_id] %>
   Image: <br>
   <%= f.file_field :stck_img %><br>
   Name: <br>
@@ -13,11 +14,11 @@
   Sell Price: <br>
   <%= f.number_field :sell_price %><br>
   Store: <br>
-  <%= f.collection_select :store_id, Store.all, :id, :name, {}, {multiple: false} %><br>
+  <%= f.collection_select :store_id, Store.order(:name), :id, :name, {}, {multiple: false} %><br>
   Category: <br>
-  <%= f.collection_select :category_id, Category.all, :id, :name, {}, {multiple: false} %><br>
+  <%= f.collection_select :category_id, Category.order(:name), :id, :name, {}, {multiple: false} %><br>
   Subcategory: <br>
-  <%= f.collection_select :subcategory_id, Subcategory.all, :id, :name, {}, {multiple: false} %><br><br>
+  <%= f.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, {}, {multiple: false} %><br><br>
   <%= f.submit "Submit" %>
 
 <% end %>
