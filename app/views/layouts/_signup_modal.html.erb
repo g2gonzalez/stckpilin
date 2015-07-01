@@ -1,0 +1,31 @@
+<div class="modal fade" id="signup">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title text-center">Sign Up</h3>
+      </div>
+      <div class="modal-body">
+
+        <%= form_for User.new, url: users_path do |f| %>
+          Username: <br>
+          <%= f.text_field :username %><br>
+          Email: <br>
+          <%= f.text_field :email %><br>
+          Password: <br>
+          <%= f.password_field :password %><br>
+          Password Confirmation: <br>
+          <%= f.password_field :password_confirmation %><br>
+          Your State: <br>
+          <%= f.collection_select :location_id, Location.all, :id, :state, {}, {multiple: false} %><br><br>
+          <%= f.submit "Sign Up", class: "btn btn-primary btn-block" %>
+        <% end %>
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,34 +1,40 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-      <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsed">
-            <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-          </button>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <a class="navbar-brand" href="/">StckPilin</a>
-        </div>
+    </div>
 
-        <div class="collapse navbar-collapse" id="collapsed">
-          <ul class="nav navbar-nav navbar-right">
+    <div class="collapse navbar-collapse" id="collapsed">
+      <ul class="nav navbar-nav navbar-right">
 
-            <!-- if user is signed in display  there name and logout option -->
-            <% if current_user %>
-              <li><%= link_to "Home", root_path %></li>
-                <li><%= link_to "Logout", logout_path %></li>
-                <li>
-                  <p class="navbar-text">Signed in as:
-                    <span class="user-name"><%= current_user.username %></span>
-                  </p>
-                </li>
-                <!-- if user is not signed in display login and signup -->
-              <% else %>
-                <li><%= link_to "Signup", signup_path %></li>
-                <li><%= link_to "Login", login_path %></li>
-              <% end %>
+        <!-- if user is signed in display  there name and logout option -->
+        <% if current_user %>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Logout", logout_path %></li>
+          <li>
+            <p class="navbar-text">Signed in as:
+              <span class="user-name"><%= current_user.username %></span>
+            </p>
+          </li>
+          <!-- if user is not signed in display login and signup -->
+        <% else %>
+          <li><%= link_to "Signup", "#signup", data: { toggle: "modal"}, class: "btn btn-default" %></li>
+          <li><%= link_to "Login", "#login", data: { toggle: "modal" }, class: "btn btn-success" %></li>
+        <% end %>
 
-        </ul>
-        </div>
+      </ul>
+    </div>
   </div><!-- container -->
 </nav>
+
+
+<!-- modal partial -->
+<%= render "layouts/login_modal" %>
+<!-- signup partial -->
+<%= render "layouts/signup_modal" %>
