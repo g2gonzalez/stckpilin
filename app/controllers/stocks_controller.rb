@@ -1,6 +1,7 @@
 class StocksController < ApplicationController
 
   def index
+    @user = User.find(session[:user_id])
     @stocks = Stock.all
   end
 

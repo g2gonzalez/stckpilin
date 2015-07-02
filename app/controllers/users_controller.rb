@@ -9,9 +9,9 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, flash: { success: "Welcome #{current_user.username} your account was successfully created." }
+      redirect_to stocks_path, flash: { success: "Welcome #{current_user.username} your account was successfully created." }
     else
-      redirect_to signup_path, flash: { warning: "Hmmm that wasn't right. Try again." }
+      render :new
     end
   end
 

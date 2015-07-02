@@ -1,28 +1,5 @@
-<h1>StckPilin Home</h1>
-
-<br>
-
-<%= link_to "Open Modal", "#popup", data: { toggle: "modal" }, class: "btn btn-success" %>
-
-<div class="modal fade" id="popup">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<%= link_to "&times;".html_safe, data: { dismiss: "modal" }, class: "close" %>
-				<h3>Log In Demo</h3>
-			</div>
-			<div class="modal-body">
-				<h3>Modal Body.........</h3>
-			</div>
-			<div class="modal-footer">
-				<h2>Modal Footer</h2>
-			</div>
-		</div>
-	</div>
-</div>
+<h1><%= @user.username %> Home</h1>
 
 <br><br>
-
-<h3>Subcategory pluralized is <%= "subcategory".pluralize %></h3>
 
 <%= link_to "Add Stock", new_stock_path %>
