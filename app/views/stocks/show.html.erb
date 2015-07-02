@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-md-6 .col-sm-6 .col-xs-6 col-md-offset-3">
+    <div class="panel panel-default">
+    <div class="panel-body">
+      <%= image_tag @stock.stck_img, class: "img-responsive" %><br>
+    </div>
+    <div class="panel-footer">
+      <h3><%= "#{@stock.name}" %></h3>
+      <%= link_to "Home", stocks_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  </div>
+</div>

@@ -21,7 +21,7 @@ class StocksController < ApplicationController
     @stock = Stock.new(stock_params)
 
     if @stock.save
-      redirect_to stocks_path, flash: { success: "New stock created successfully" }
+      redirect_to @stock, flash: { success: "New stock created successfully" }
     else
       render :new
     end

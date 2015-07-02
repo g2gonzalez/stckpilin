@@ -2,6 +2,10 @@
 	<h1>StockPile Dashboard</h1>
 </div>
 
+<% @stocks.each do |stock| %>
+	<%= link_to "#{stock.name}", stock_path(stock.id) %>
+<% end %>
+
 <br><br>
 
 <%= link_to "Add Stock", new_stock_path %>
