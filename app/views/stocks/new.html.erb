@@ -1,24 +1,52 @@
-<h1>Add Stock</h1>
+<br>
+<div class="row">
+  <div class="col-md-8 .col-sm-8 .col-xs-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="text-center">Add Stock</h3>
+      </div>
+      <div class="panel-body">
+        <%= form_for @stock do |f| %>
 
-<%= form_for @stock do |f| %>
+          <%= f.hidden_field :user_id, value: session[:user_id] %>
+          <div class="form-group">
+            <%= f.label :image %>
+            <%= f.file_field :stck_img, class: "help-block" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :quantity %>
+            <%= f.number_field :quantity, placeholder: "Quantity", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :buy_price %>
+            <%= f.number_field :buy_price, placeholder: "Buy Price", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :sell_price %>
+            <%= f.number_field :sell_price, placeholder: "Sell Price", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :store %>
+            <%= f.collection_select :store_id, Store.order(:name), :id, :name, { prompt: "Choose a store" }, { class: "form-control" } %>
+          </div>
+          <div class="form-group">
+            <%= f.label :category %>
+            <%= f.collection_select :category_id, Category.order(:name), :id, :name, { prompt: "Choose a category" }, { class: "form-control" } %>
+          </div>
+          <div class="form-group">
+            <%= f.label :subcategory %>
+            <%= f.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, { prompt: "Choose a subcategory" }, { class: "form-control" } %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Add Stock", class: "btn btn-primary" %>
+          </div>
 
-  <%= f.hidden_field :user_id, value: session[:user_id] %>
-  Image: <br>
-  <%= f.file_field :stck_img %><br>
-  Name: <br>
-  <%= f.text_field :name %><br>
-  Quantity: <br>
-  <%= f.number_field :quantity %><br>
-  Buy Price: <br>
-  <%= f.number_field :buy_price %><br>
-  Sell Price: <br>
-  <%= f.number_field :sell_price %><br>
-  Store: <br>
-  <%= f.collection_select :store_id, Store.order(:name), :id, :name, {}, {multiple: false} %><br>
-  Category: <br>
-  <%= f.collection_select :category_id, Category.order(:name), :id, :name, {}, {multiple: false} %><br>
-  Subcategory: <br>
-  <%= f.grouped_collection_select :subcategory_id, Category.order(:name), :subcategories, :name, :id, :name, {}, {multiple: false} %><br><br>
-  <%= f.submit "Submit" %>
-
-<% end %>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>

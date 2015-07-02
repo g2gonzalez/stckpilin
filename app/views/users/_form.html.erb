@@ -44,7 +44,7 @@
           <br>
           <div class="input-group">
             <span class="input-group-addon"><span class="glyphicon glyphicon-chevron-down"></span></span>
-            <%= f.collection_select :location_id, Location.all, :id, :state, { prompt: "Choose your state" }, { class: "form-control"} %>
+            <%= f.collection_select :location_id, Location.order(:state), :id, :state, { prompt: "Choose your state" }, { class: "form-control"} %>
           </div>
           <br>
           <div class="form-group">
