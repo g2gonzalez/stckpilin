@@ -1,14 +1,22 @@
 <div class="row">
-  <div class="col-md-6 .col-sm-6 .col-xs-6 col-md-offset-3">
+  <div class="col-md-4 .col-sm-4 .col-xs-4 col-md-offset-4">
     <div class="panel panel-default">
       <div class="panel-body">
-        <%= image_tag @stock.stck_img, class: "img-responsive" %><br>
+        <%= image_tag @stock.stck_img, class: "img-responsive img-thumbnail show-img" %><br>
       </div>
       <div class="panel-footer">
-        <h3><%= "#{@stock.name}" %></h3>
-        <%= link_to "Home", stocks_path, class: "btn btn-primary" %>
+        <h3><%= "#{ @stock.name }" %></h3>
+        <p>Quantity: <span class="badge"><%= "#{ @stock.quantity }" %></span></p>
+        <p>Store: <%= "#{ @stock.store.name }, #{ @stock.user.location.state }" %></p>
+        <p>Category: <%= "#{ @stock.category.name }" %></p>
+        <p>Subcategory: <%= "#{ @subcategory.name }" %></p>
+        <p>Purchase for: $<%= "#{ @stock.sell_price }" %>
+          <a href="#" class="btn btn-sm btn-success">Buy</a>
+        </p>
+        <hr>
+        <p>Stocked by: <%= "#{ @stock.user.username } about #{time_ago_in_words( @stock.created_at ) } ago" %></p>
       </div>
     </div>
-    <%= link_to 'Back', stocks_path %>
+    <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
   </div>
 </div>

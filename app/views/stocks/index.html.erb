@@ -6,17 +6,38 @@
   <table class="table table-hover">
     <tr>
       <th>Name</th>
-      <th></th>
+      <th>Quantity</th>
+      <th>Store</th>
+      <th>Buy Price</th>
+      <th>Sell Price</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Destroy</th>
     </tr>
-
     <% @stocks.each do |stock| %>
       <tr>
-        <td><%= link_to "#{stock.name}", stock_path(stock.id) %></td>
+        <td><%= "#{ stock.name }" %></td>
+        <td><%= "#{ stock.quantity }" %></td>
+        <td><%= "#{ stock.store.name }" %></td>
+        <td><%= "$#{ stock.buy_price }" %></td>
+        <td><%= "$#{ stock.sell_price }" %></td>
+        <% @buy_total += stock.quantity.to_i * stock.buy_price.to_i %>
+        <% @sell_total += stock.quantity.to_i * stock.sell_price.to_i %>
         <td><%= link_to "Show", stock_path( stock ), class: "btn btn-xs btn-success" %></td>
         <td><%= link_to "Edit", edit_stock_path( stock ), class: "btn btn-xs btn-warning" %></td>
         <td><%= link_to "Destroy", stock_path( stock ), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"} %></td>
       </tr>
     <% end %>
+    <tr class="info">
+      <td></td>
+      <td>Total: <%= "#{ @quantity_total }" %></td>
+      <td></td>
+      <td>Total spent: <%= "#{ @buy_total }" %></td>
+      <td>Total sold: <%= "#{ @sell_total }" %></td>
+      <td></td>
+      <td>Total profit: <%= "#{ @sell_total - @buy_total }" %></td>
+      <td></td>
+    </tr>
   </table>
 </div>
 

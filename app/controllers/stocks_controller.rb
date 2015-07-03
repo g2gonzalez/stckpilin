@@ -5,13 +5,19 @@ class StocksController < ApplicationController
   def index
     @user = User.find( session[:user_id] )
     @stocks = Stock.all
+    @quantity_total = Stock.sum( :quantity )
+    @buy_total = 0
+    @sell_total = 0
   end
 
   def display
   end
 
   def show
+    @user = User.find( session[:user_id] )
     @stock = Stock.find( params[:id] )
+    sub_id = @stock.subcategory_id
+    @subcategory = Subcategory.find( sub_id )
   end
 
   def new
@@ -51,7 +57,7 @@ class StocksController < ApplicationController
 
   private
     def stock_params
-      params.require(:stock).permit(:name, :quantity, :stck_img, :store_id, :category_id, :subcategory_id, :buy_price, :sell_price)
+      params.require(:stock).permit(:name, :quantity, :stck_img, :store_id, :category_id, :subcategory_id, :buy_price, :sell_price, :user_id)
     end
 
 end
