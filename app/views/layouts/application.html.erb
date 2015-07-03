@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Stckpilin</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Stckpilin</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-  <!-- navbar partial -->
-  <%= render 'layouts/navbar' %>
+    <!-- navbar partial -->
+    <%= render 'layouts/navbar' %>
 
-  <div class="container">
+    <div class="container">
 
-    <!-- flash message partial -->
-    <%= render 'layouts/flash' %>
+      <!-- flash message partial -->
+      <%= render 'layouts/flash' %>
 
-    <%= yield %>
+      <%= yield %>
 
-  </div>
+    </div>
 
-  <!-- footer partial -->
-  <%= render 'layouts/footer' %>
+    <!-- footer partial -->
 
-</body>
+
+  </body>
 </html>

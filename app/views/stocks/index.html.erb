@@ -1,10 +1,24 @@
 <div class="jumbotron dashboard">
-	<h1>StockPile Dashboard</h1>
+  <h1>StockPile Dashboard</h1>
 </div>
 
-<% @stocks.each do |stock| %>
-	<%= link_to "#{stock.name}", stock_path(stock.id) %>
-<% end %>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+
+    <% @stocks.each do |stock| %>
+      <tr>
+        <td><%= link_to "#{stock.name}", stock_path(stock.id) %></td>
+        <td><%= link_to "Show", stock_path( stock ), class: "btn btn-xs btn-success" %></td>
+        <td><%= link_to "Edit", edit_stock_path( stock ), class: "btn btn-xs btn-warning" %></td>
+        <td><%= link_to "Destroy", stock_path( stock ), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"} %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
 <br><br>
 
