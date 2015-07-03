@@ -11,6 +11,7 @@ class StocksController < ApplicationController
   end
 
   def display
+    @stocks = Stock.all
   end
 
   def show
@@ -61,3 +62,6 @@ class StocksController < ApplicationController
     end
 
 end
+
+
+# Transaction.sum(:value) use to find sums in columns of your tables

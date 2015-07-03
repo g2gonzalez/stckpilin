@@ -21,11 +21,11 @@
         <td><%= "#{ stock.store.name }" %></td>
         <td><%= "$#{ stock.buy_price }" %></td>
         <td><%= "$#{ stock.sell_price }" %></td>
-        <% @buy_total += stock.quantity.to_i * stock.buy_price.to_i %>
-        <% @sell_total += stock.quantity.to_i * stock.sell_price.to_i %>
         <td><%= link_to "Show", stock_path( stock ), class: "btn btn-xs btn-success" %></td>
         <td><%= link_to "Edit", edit_stock_path( stock ), class: "btn btn-xs btn-warning" %></td>
         <td><%= link_to "Destroy", stock_path( stock ), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"} %></td>
+        <% @buy_total += stock.quantity.to_i * stock.buy_price.to_i %>
+        <% @sell_total += stock.quantity.to_i * stock.sell_price.to_i %>
       </tr>
     <% end %>
     <tr class="info">
@@ -43,4 +43,4 @@
 
 <br><br>
 
-<%= link_to "Add Stock", new_stock_path %>
+<%= link_to "Add Stock", new_stock_path, class: "btn btn-primary" %>
