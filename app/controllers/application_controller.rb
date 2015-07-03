@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to '/login' unless current_user
+    @user_id = params[:id].to_i
+    if @user_id != current_user
+      redirect_to login_path, flash: { danger: "Whoa buddy. That page is off limits!" }
+    end
   end
+
 end

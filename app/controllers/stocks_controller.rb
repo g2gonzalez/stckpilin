@@ -1,12 +1,17 @@
 class StocksController < ApplicationController
+  # check that the current user can only see the correct pages
+  before_action :authorize, except: [ :display, :show ]
 
   def index
-    @user = User.find(session[:user_id])
+    @user = User.find( session[:user_id] )
     @stocks = Stock.all
   end
 
+  def display
+  end
+
   def show
-    @stock = Stock.find(params[:id])
+    @stock = Stock.find( params[:id] )
   end
 
   def new
@@ -14,24 +19,24 @@ class StocksController < ApplicationController
   end
 
   def edit
-    @stock = Stock.find(params[:id])
+    @stock = Stock.find( params[:id] )
   end
 
   def create
-    @stock = Stock.new(stock_params)
+    @stock = Stock.new( stock_params )
 
     if @stock.save
-      redirect_to @stock, flash: { success: "New stock created successfully" }
+      redirect_to @stock, flash: { info: "New stock created successfully" }
     else
       render :new
     end
   end
 
   def update
-    @stock = Stock.find(params[:id])
+    @stock = Stock.find( params[:id] )
 
-    if @stock.update(stock_params)
-      redirect_to @stock
+    if @stock.update( stock_params )
+      redirect_to @stock, flash: { info: "Stock successfully updated" }
     else
       render :edit
     end
@@ -39,9 +44,9 @@ class StocksController < ApplicationController
 
   def destroy
     @stock = Stock.find(params[:id])
-        @stock.destroy
+    @stock.destroy
 
-        redirect_to root_path
+    redirect_to root_path, flash: { info: "Stock successfully deleted" }
   end
 
   private
