@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def authorize
     if not current_user
-      redirect_to login_path, flash: { danger: "Whoa buddy. That page is off limits!" }
+      redirect_to login_path, flash: { danger: "Whoa buddy. That page is off limits. You may want to try a url like this: stckpilin.com/USERNAME" }
     end
   end
 
