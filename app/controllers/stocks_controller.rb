@@ -1,6 +1,7 @@
 class StocksController < ApplicationController
   # check that the current user can only see the correct pages
   before_action :authorize, except: [ :display, :show ]
+  before_action :find_stock, only: [ :show, :edit, :update, :destroy ]
 
   def index
     @user = User.find( session[:user_id] )
@@ -16,7 +17,6 @@ class StocksController < ApplicationController
 
   def show
     @user = User.find( session[:user_id] )
-    @stock = Stock.find( params[:id] )
     sub_id = @stock.subcategory_id
     @subcategory = Subcategory.find( sub_id )
   end
@@ -26,7 +26,6 @@ class StocksController < ApplicationController
   end
 
   def edit
-    @stock = Stock.find( params[:id] )
   end
 
   def create
@@ -40,8 +39,6 @@ class StocksController < ApplicationController
   end
 
   def update
-    @stock = Stock.find( params[:id] )
-
     if @stock.update( stock_params )
       redirect_to @stock, flash: { info: "Stock successfully updated" }
     else
@@ -50,13 +47,16 @@ class StocksController < ApplicationController
   end
 
   def destroy
-    @stock = Stock.find(params[:id])
     @stock.destroy
 
     redirect_to root_path, flash: { info: "Stock successfully deleted" }
   end
 
   private
+    def find_stock
+      @stock = Stock.find( params[ :id ] )
+    end
+
     def stock_params
       params.require(:stock).permit(:name, :quantity, :stck_img, :store_id, :category_id, :subcategory_id, :buy_price, :sell_price, :user_id)
     end
