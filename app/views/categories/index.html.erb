@@ -3,12 +3,15 @@
 </div>
 
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table id="categories" class="table table-hover">
+    <thead>
     <tr>
       <th>Category</th>
       <th>Edit</th>
       <th>Destroy</th>
     </tr>
+    </thead>
+    <tbody>
     <% @categories.each do |category| %>
       <tr>
         <td><%= "#{ category.name }" %></td>
@@ -16,8 +19,10 @@
         <td><%= link_to "Destroy", category_path( category ), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"} %></td>
       </tr>
     <% end %>
+    </tbody>
   </table>
 </div>
 
+<hr>
 <%= link_to "Add Category", new_category_path, class: "btn btn-default" %>
 <%= link_to "Back", stocks_path, class: "btn btn-primary" %>

@@ -3,7 +3,8 @@
 </div>
 
 <div class="table-responsive">
-  <table class="table table-hover">
+  <table id="stocks" class="table table-hover">
+    <thead>
     <tr>
       <th>Name</th>
       <th>Quantity</th>
@@ -14,6 +15,8 @@
       <th>Edit</th>
       <th>Destroy</th>
     </tr>
+    </thead>
+    <tbody>
     <% @stocks.each do |stock| %>
       <tr>
         <td><%= "#{ stock.name }" %></td>
@@ -38,11 +41,11 @@
       <td>Total profit: <%= "#{ @sell_total - @buy_total }" %></td>
       <td></td>
     </tr>
+    </tbody>
   </table>
 </div>
 
-<br><br>
-
+<hr>
 <%= link_to "Add Stock", new_stock_path, class: "btn btn-primary" %>
 <%= link_to "Add Category", new_category_path, class: "btn btn-default" %>
 
