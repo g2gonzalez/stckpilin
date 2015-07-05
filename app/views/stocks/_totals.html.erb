@@ -1,0 +1,30 @@
+<% @stocks.each do |stock| %>
+    <% @buy_total += stock.quantity.to_i * stock.buy_price.to_i %>
+    <% @sell_total += stock.quantity.to_i * stock.sell_price.to_i %>
+    <% @profit = @sell_total - @buy_total %>
+<% end %>
+
+<div class="col-xs-6 col-sm-3 placeholder">
+  <img data-src="holder.js/175x175/auto/sky" class="img-responsive">
+  <h4>Total Quantity</h4>
+  <span class="badge"><%= "#{ @quantity_total }" %></span>
+  <span class="text-muted">stocks in your stockpile</span>
+</div>
+<div class="col-xs-6 col-sm-3 placeholder">
+  <img data-src="holder.js/175x175/auto/vine" class="img-responsive">
+  <h4>Total Spent</h4>
+  <span class="badge">$<%= "#{ @buy_total }" %></span>
+  <span class="text-muted">spent on stocks</span>
+</div>
+<div class="col-xs-6 col-sm-3 placeholder">
+  <img data-src="holder.js/175x175/auto/sky" class="img-responsive">
+  <h4>Total Sold</h4>
+  <span class="text-muted">Sold stocks for a total of </span>
+  <span class="badge">$<%= "#{ @sell_total }" %></span>
+</div>
+<div class="col-xs-6 col-sm-3 placeholder">
+  <img data-src="holder.js/175x175/auto/vine" class="img-responsive">
+  <h4>Total Profit</h4>
+  <span class="text-muted">Made a profit of </span>
+  <span class="badge">$<%= "#{ @profit }" %></span>
+</div>

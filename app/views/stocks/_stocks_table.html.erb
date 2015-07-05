@@ -1,0 +1,28 @@
+<table id="stocks" class="table table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Quantity</th>
+      <th>Store</th>
+      <th>Buy Price</th>
+      <th>Sell Price</th>
+      <th>Show</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @stocks.each do |stock| %>
+      <tr>
+        <td><%= "#{ stock.name }" %></td>
+        <td><%= "#{ stock.quantity }" %></td>
+        <td><%= "#{ stock.store.name }" %></td>
+        <td><%= "$#{ stock.buy_price }" %></td>
+        <td><%= "$#{ stock.sell_price }" %></td>
+        <td><%= link_to "Show", stock_path( stock ), class: "btn btn-xs btn-success" %></td>
+        <td><%= link_to "Edit", edit_stock_path( stock ), class: "btn btn-xs btn-warning" %></td>
+        <td><%= link_to "Destroy", stock_path( stock ), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

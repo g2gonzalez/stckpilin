@@ -170,6 +170,8 @@ GEM
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     hirb (0.7.3)
+    holder_rails (2.7.1)
+      railties (>= 3.1.0)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -280,6 +282,7 @@ DEPENDENCIES
   figaro
   fog
   hirb
+  holder_rails
   jbuilder (~> 2.0)
   jquery-datatables-rails (~> 3.3.0)
   jquery-rails
