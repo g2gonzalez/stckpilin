@@ -15,7 +15,7 @@
 
         <!-- if user is signed in display  there name and logout option -->
         <% if current_user %>
-          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Home", stocks_path %></li>
           <li><%= link_to "Logout", logout_path %></li>
           <li>
             <p class="navbar-text">Signed in as:

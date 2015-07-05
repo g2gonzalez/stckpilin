@@ -2,6 +2,8 @@
   <h1>StockPile Dashboard</h1>
 </div>
 
+<div class="row">
+  <div class="col-md-9 .col-sm-9 .col-xs-9">
 <div class="table-responsive">
   <table id="stocks" class="table table-hover">
     <thead>
@@ -35,13 +37,31 @@
     </tbody>
   </table>
 </div>
+</div>
 
-<h3>quantity total: <%= "#{ @quantity_total }" %></h3>
-<h3>total spent: <%= "#{ @buy_total }" %></h3>
-<h3>total sold: <%= "#{ @sell_total }" %></h3>
-<h3>total profit: <%= "#{ @profit }" %></h3>
+<div class="col-md-3 .col-sm-3 .col-xs-3">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <span class="badge"><%= "#{ @quantity_total }" %></span>
+      Quantity Total
+    </li>
+    <li class="list-group-item">
+      <span class="badge">$<%= "#{ @buy_total }" %></span>
+      Total Spent
+    </li>
+    <li class="list-group-item">
+      <span class="badge">$<%= "#{ @sell_total }" %></span>
+      Total Sold
+    </li>
+    <li class="list-group-item">
+      <span class="badge">$<%= "#{ @profit }" %></span>
+      Total Profit
+    </li>
+  </ul>
+</div>
+</div>
 
 <hr>
 <%= link_to "Add Stock", new_stock_path, class: "btn btn-primary" %>
-<%= link_to "Add Category", new_category_path, class: "btn btn-default" %>
+<%= link_to "Add Category", categories_path, class: "btn btn-default" %>
 
