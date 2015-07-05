@@ -23,6 +23,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 # Use for styling
 gem 'bootstrap-sass', '~> 3.3.4'
+# Use for nested forms
+gem "cocoon"
 # Use to display tables in rails console
 gem 'hirb'
 # Use to store sensitive data

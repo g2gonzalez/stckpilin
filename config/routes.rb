@@ -11,8 +11,9 @@ Rails.application.routes.draw do
   get     '/signup'    =>     'users#new'
   post    '/users'      =>    'users#create'
 
+  resources :stocks
+  resources :categories
+
   # link to your stockpile available to the public
   get '/:username', to: 'stocks#display', as: 'public_stock'
-
-  resources :stocks
 end
