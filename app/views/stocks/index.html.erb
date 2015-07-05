@@ -29,21 +29,17 @@
         <td><%= link_to "Destroy", stock_path( stock ), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"} %></td>
         <% @buy_total += stock.quantity.to_i * stock.buy_price.to_i %>
         <% @sell_total += stock.quantity.to_i * stock.sell_price.to_i %>
+        <% @profit = @sell_total - @buy_total %>
       </tr>
     <% end %>
-    <tr class="info">
-      <td></td>
-      <td>Total: <%= "#{ @quantity_total }" %></td>
-      <td></td>
-      <td>Total spent: <%= "#{ @buy_total }" %></td>
-      <td>Total sold: <%= "#{ @sell_total }" %></td>
-      <td></td>
-      <td>Total profit: <%= "#{ @sell_total - @buy_total }" %></td>
-      <td></td>
-    </tr>
     </tbody>
   </table>
 </div>
+
+<h3>quantity total: <%= "#{ @quantity_total }" %></h3>
+<h3>total spent: <%= "#{ @buy_total }" %></h3>
+<h3>total sold: <%= "#{ @sell_total }" %></h3>
+<h3>total profit: <%= "#{ @profit }" %></h3>
 
 <hr>
 <%= link_to "Add Stock", new_stock_path, class: "btn btn-primary" %>
