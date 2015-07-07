@@ -1,28 +1,34 @@
 <div class="jumbotron dashboard">
-  <h1>Categories</h1>
+  <h1 class="text-center">Categories</h1>
 </div>
 
-<div class="table-responsive">
-  <table id="categories" class="table table-hover">
-    <thead>
-    <tr>
-      <th>Category</th>
-      <th>Edit</th>
-      <th>Destroy</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= "#{ category.name }" %></td>
-        <td><%= link_to "Edit", edit_category_path( category ), class: "btn btn-xs btn-warning" %></td>
-        <td><%= link_to "Destroy", category_path( category ), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"} %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<div class="row">
+  <div class="col-md-12 .col-sm-12 .col-xs-12">
+    <div class="table-responsive">
+      <table id="categories" class="table table-hover">
+        <thead>
+        <tr>
+          <th>Category</th>
+          <th>Edit</th>
+          <th>Destroy</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @categories.each do |category| %>
+          <tr>
+            <td><%= "#{ category.name }" %></td>
+            <td><%= link_to "Edit", edit_category_path( category ), class: "btn btn-xs btn-warning" %></td>
+            <td><%= link_to "Destroy", category_path( category ), method: :delete, class: "btn btn-xs btn-danger", data: { confirm: "Are you sure?"} %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
 <hr>
 <%= link_to "Add Category", new_category_path, class: "btn btn-default" %>
 <%= link_to "Back", stocks_path, class: "btn btn-primary" %>
+
+<br><br><br><br>

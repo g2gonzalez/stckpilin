@@ -15,6 +15,12 @@
  *= require dataTables/jquery.dataTables
  */
 @import url(https://fonts.googleapis.com/css?family=Lato);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+$navbar-default-brand-color: red;
+$navbar-default-brand-hover-color: red;
+$jumbotron-bg: white;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -23,6 +29,13 @@ body {
   font-family: 'Lato', sans-serif;
   background: #E9E9E9;
   padding-top: 70px;
+}
+
+.navbar {
+  .navbar-brand {
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+  }
 }
 
 button.close {
@@ -38,7 +51,14 @@ button.close {
   padding-bottom: 10px;
 }
 
+.jumbotron {
+  background: white;
+}
+
 footer {
+  vertical-align: baseline;
+  border: 0;
+  outline: 0;
   margin-top: 30px;
   background: white;
   width: 100%;
