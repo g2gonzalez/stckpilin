@@ -10,17 +10,22 @@
         <p>Store: <%= "#{ @stock.store.name }, #{ @stock.user.location.state }" %></p>
         <p>Category: <%= "#{ @stock.category.name }" %></p>
         <p>Subcategory: <%= "#{ @subcategory.name }" %></p>
-        <p>Purchase for: $<%= "#{ @stock.sell_price }" %>
-          <a href="#" class="btn btn-sm btn-success">Buy</a>
-        </p>
+        <p>Purchase for: $<%= "#{ @stock.sell_price }" %></p>
         <hr>
-        <p>Stocked by: <%= "#{ @stock.user.username } about #{time_ago_in_words( @stock.created_at ) } ago" %></p>
+        <p>Stocked by: <%= "#{ @stock.user.username } about #{time_ago_in_words( @stock.created_at ) } ago" %>
+        <%= link_to like_stock_path( @stock ), method: :put, class: "btn btn-default pull-right" do %>
+          <span class="glyphicon glyphicon-heart"></span>
+          <%= @stock.get_upvotes.size %>
+        <% end %>
+      </p>
       </div>
     </div>
-    <%= link_to like_stock_path( @stock ), method: :put, class: "btn btn-default" do %>
-      <span class="glyphicon glyphicon-heart"></span>
-      <%= @stock.get_upvotes.size %>
+    <% if current_user %>
+      <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
+      <%= link_to "Edit", edit_stock_path( @stock ), class: "btn btn-warning" %></td>
+      <%= link_to "Destroy", stock_path( @stock ), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?"} %></td>
+    <% else %>
+      <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
     <% end %>
-    <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
   </div>
 </div>

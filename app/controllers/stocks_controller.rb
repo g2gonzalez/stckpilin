@@ -16,7 +16,7 @@ class StocksController < ApplicationController
   end
 
   def show
-    @user = User.find( session[:user_id] )
+    @user = User.find( @stock.user_id )
     sub_id = @stock.subcategory_id
     @subcategory = Subcategory.find( sub_id )
   end
@@ -54,6 +54,7 @@ class StocksController < ApplicationController
 
   def upvote
     @stock.upvote_by current_user
+
     redirect_to :back
   end
 
