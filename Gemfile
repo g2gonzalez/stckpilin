@@ -27,6 +27,8 @@ gem 'bootstrap-sass', '~> 3.3.4'
 gem 'holder_rails'
 # Use for nested forms
 gem "cocoon"
+# Use for votes
+gem 'acts_as_votable', '~> 0.10.0'
 # Use to make tables more functional
 gem 'jquery-datatables-rails', '~> 3.3.0'
 # Use to display tables in rails console
