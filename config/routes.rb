@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   get     '/signup'    =>     'users#new'
   post    '/users'      =>    'users#create'
 
-  resources :stocks
+  resources :stocks do
+    member do
+      put "like", to: "stocks#upvote"
+    end
+  end
   resources :categories
 
   # link to your stockpile available to the public

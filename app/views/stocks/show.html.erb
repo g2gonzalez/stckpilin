@@ -17,6 +17,10 @@
         <p>Stocked by: <%= "#{ @stock.user.username } about #{time_ago_in_words( @stock.created_at ) } ago" %></p>
       </div>
     </div>
+    <%= link_to like_stock_path( @stock ), method: :put, class: "btn btn-default" do %>
+      <span class="glyphicon glyphicon-heart"></span>
+      <%= @stock.get_upvotes.size %>
+    <% end %>
     <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
   </div>
 </div>

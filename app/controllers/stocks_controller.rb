@@ -1,7 +1,7 @@
 class StocksController < ApplicationController
   # check that the current user can only see the correct pages
   before_action :authorize, except: [ :display, :show ]
-  before_action :find_stock, only: [ :show, :edit, :update, :destroy ]
+  before_action :find_stock, only: [ :show, :edit, :update, :destroy, :upvote ]
 
   def index
     @user = User.find( session[:user_id] )
@@ -50,6 +50,11 @@ class StocksController < ApplicationController
     @stock.destroy
 
     redirect_to root_path, flash: { info: "Stock successfully deleted" }
+  end
+
+  def upvote
+    @stock.upvote_by current_user
+    redirect_to :back
   end
 
   private
