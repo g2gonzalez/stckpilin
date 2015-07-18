@@ -1,10 +1,10 @@
-<div class="push"></div>
 <h1>Public Display Page</h1>
 
 <div class="row">
 
+<% @stocks.each do |stock| %>
     <div id="stocks" class="col-sm-3 col-md-3">
-      <% @stocks.each do |stock| %>
+
       <div class="box panel panel-default">
         <div class="panel-body">
           <%= image_tag stock.stck_img, class: "img-responsive thumb-img" %>
@@ -14,8 +14,9 @@
             <p>Stocked by: <%= "#{ stock.user.username }" %></p>
         </div>
       </div>
-       <% end %>
+
     </div>
+    <% end %>
 
 </div>
 

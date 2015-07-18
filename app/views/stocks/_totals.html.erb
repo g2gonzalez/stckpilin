@@ -5,26 +5,25 @@
 <% end %>
 
 <div class="col-xs-6 col-sm-3 placeholder">
-  <img data-src="holder.js/175x175/auto/sky" class="img-responsive">
+  <h1 class="total-num text-center"><%= "#{ @quantity_total }" %></h1>
   <h4>Total Quantity</h4>
-  <span class="badge"><%= "#{ @quantity_total }" %></span>
-  <span class="text-muted">stocks in your stockpile</span>
+  <span class="text-muted">Total # of items in your stockpile</span>
 </div>
+
 <div class="col-xs-6 col-sm-3 placeholder">
-  <img data-src="holder.js/175x175/auto/vine" class="img-responsive">
+  <h1 class="total-num text-center">$<%= "#{ @buy_total }" %></h1>
   <h4>Total Spent</h4>
-  <span class="badge">$<%= "#{ @buy_total }" %></span>
-  <span class="text-muted">spent on stocks</span>
+  <span class="text-muted">Total # spent on items</span>
 </div>
+
 <div class="col-xs-6 col-sm-3 placeholder">
-  <img data-src="holder.js/175x175/auto/sky" class="img-responsive">
+  <h1 class="total-num text-center">$<%= "#{ @sell_total }" %></h1>
   <h4>Total Sold</h4>
-  <span class="text-muted">Sold stocks for a total of </span>
-  <span class="badge">$<%= "#{ @sell_total }" %></span>
+  <span class="text-muted">Total # items sold for</span>
 </div>
+
 <div class="col-xs-6 col-sm-3 placeholder">
-  <img data-src="holder.js/175x175/auto/vine" class="img-responsive">
+  <h1 class="total-num text-center">$<%= "#{ @profit }" %></h1>
   <h4>Total Profit</h4>
-  <span class="text-muted">Made a profit of </span>
-  <span class="badge">$<%= "#{ @profit }" %></span>
+  <span class="text-muted">Total Sold - Total Spent</span>
 </div>

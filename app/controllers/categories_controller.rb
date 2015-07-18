@@ -19,6 +19,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new( category_params )
+    @category.user_id = session[ :user_id ]
 
     if @category.save
       redirect_to categories_path, flash: { info: "New category created successfully" }

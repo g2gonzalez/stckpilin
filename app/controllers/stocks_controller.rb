@@ -16,9 +16,10 @@ class StocksController < ApplicationController
   end
 
   def show
-    @user = User.find( @stock.user_id )
     sub_id = @stock.subcategory_id
     @subcategory = Subcategory.find( sub_id )
+    @stocks = Stock.where( user_id: @stock.user_id )
+    puts "STOCKS => #{@stocks}"
   end
 
   def new
@@ -30,6 +31,7 @@ class StocksController < ApplicationController
 
   def create
     @stock = Stock.new( stock_params )
+    @stock.user_id = session[ :user_id ]
 
     if @stock.save
       redirect_to @stock, flash: { info: "New stock created successfully" }
@@ -64,7 +66,7 @@ class StocksController < ApplicationController
     end
 
     def stock_params
-      params.require(:stock).permit(:name, :quantity, :stck_img, :store_id, :category_id, :subcategory_id, :buy_price, :sell_price, :user_id)
+      params.require( :stock ).permit( :name, :quantity, :stck_img, :store_id, :category_id, :subcategory_id, :buy_price, :sell_price )
     end
 
 end
