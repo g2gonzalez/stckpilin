@@ -19,15 +19,15 @@
       <p>
         Stocked by: <%= "#{ @stock.user.username } about #{ time_ago_in_words( @stock.created_at ) } ago" %>
       </p>
-      <% if current_user %>
-        <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
-        <%= link_to "Edit", edit_stock_path( @stock ), class: "btn btn-warning" %></td>
-        <%= link_to "Destroy", stock_path( @stock ), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?"} %></td>
-      <% else %>
-        <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
-      <% end %>
     </div>
 
+    <% if current_user %>
+      <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
+      <%= link_to "Edit", edit_stock_path( @stock ), class: "btn btn-warning" %></td>
+      <%= link_to "Destroy", stock_path( @stock ), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?"} %></td>
+    <% else %>
+      <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
+    <% end %>
   </div>
 
   <div class="col-md-5 .col-sm-5 .col-xs-5">
