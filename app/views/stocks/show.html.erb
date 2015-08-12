@@ -2,9 +2,9 @@
 
   <div class="col-md-7 .col-sm-7 .col-xs-7">
 
-    <%= image_tag @stock.stck_img, class: "img-responsive img-thumbnail show-img" %><br><br>
-    <div id="show-jumbo" class="jumbotron">
-      <h3>
+    <%= image_tag @stock.stck_img, class: "img-responsive img-thumbnail show-img shadow" %><br><br>
+    <div id="show-jumbo" class="jumbotron shadow">
+      <h3 class="pink">
         <%= "#{ @stock.name }" %>
         <%= link_to like_stock_path( @stock ), method: :put, class: "btn btn-default" do %>
           <span class="glyphicon glyphicon-heart"></span>
@@ -14,7 +14,7 @@
       <p>Quantity: <span class="badge"><%= "#{ @stock.quantity }" %></span></p>
       <p>Category: <%= "#{ @stock.category.name }" %></p>
       <p>Subcategory: <%= "#{ @subcategory.name }" %></p>
-      <p>Purchase for: $<%= "#{ @stock.sell_price }" %></p>
+      <p>Purchase for: <%= number_to_currency( @stock.sell_price ) %></p>
       <hr>
       <p>
         Stocked by: <%= "#{ @stock.user.username } about #{ time_ago_in_words( @stock.created_at ) } ago" %>
@@ -22,19 +22,30 @@
     </div>
 
     <% if current_user %>
-      <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
+      <%= link_to 'Back', stocks_path, class: "btn btn-primary", data: { no_turbolink: true }  %>
       <%= link_to "Edit", edit_stock_path( @stock ), class: "btn btn-warning" %></td>
       <%= link_to "Destroy", stock_path( @stock ), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?"} %></td>
     <% else %>
-      <%= link_to 'Back', stocks_path, class: "btn btn-primary"  %>
+      <%= link_to 'Back', root_path, class: "btn btn-primary"  %>
     <% end %>
   </div>
 
   <div class="col-md-5 .col-sm-5 .col-xs-5">
-    <div id="sidebar" class="jumbotron">
+    <div id="sidebar" class="jumbotron shadow">
       <h2 class="text-center"><%= "#{ @stock.user.username } stockpile" %></h2><br>
       <% @stocks.each do | stock | %>
-        <li><%= stock.name %></li>
+      <div class="row">
+        <div class="col-md-2 .col-sm-2 .col-xs-2">
+          <div class="box panel panel-default shadow">
+            <div class="panel-heading panel-img">
+              <%= image_tag stock.stck_img, class: "img-responsive" %>
+            </div>
+            <div class="panel-footer">
+              <li><%= stock.name %></li>
+            </div>
+          </div>
+        </div>
+      </div>
       <% end %>
     </div>
   </div>

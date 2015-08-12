@@ -1,7 +1,7 @@
 <br>
 <div class="row">
   <div class="col-md-8 .col-sm-8 .col-xs-8 col-md-offset-2">
-    <div class="panel panel-default">
+    <div class="panel panel-default shadow">
       <div class="panel-heading">
         <h3 class="text-center">Edit Stock</h3>
       </div>
@@ -10,6 +10,6 @@
         <%= render 'stocks/form' %>
       </div>
     </div>
-    <%= link_to 'Back', stocks_path %>
+    <%= link_to 'Back', stocks_path, data: { no_turbolink: true } %>
   </div>
 </div>

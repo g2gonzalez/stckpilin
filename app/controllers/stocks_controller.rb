@@ -19,7 +19,6 @@ class StocksController < ApplicationController
     sub_id = @stock.subcategory_id
     @subcategory = Subcategory.find( sub_id )
     @stocks = Stock.where( user_id: @stock.user_id )
-    puts "STOCKS => #{@stocks}"
   end
 
   def new

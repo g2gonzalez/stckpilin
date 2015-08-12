@@ -26,9 +26,18 @@
        BOOSTRAP DEFAULTS
 -------------------------------------------------- */
 
+$purple: #7349E6;
+$green: #19BCB9;
+$yellow: #FFB417;
+$red: #F23333;
+$gray: #6F6F6F;
 $navbar-default-bg: #FFFFFF;
-$navbar-default-brand-color: red;
-$navbar-default-brand-hover-color: red;
+$navbar-default-brand-color: $purple;
+$navbar-default-brand-hover-color: $purple;
+$btn-primary-bg: $purple;
+$btn-success-bg: $green;
+$btn-warning-bg: $yellow;
+$btn-danger-bg: $red;
 $jumbotron-bg: white;
 
 @import "bootstrap-sprockets";
@@ -38,6 +47,8 @@ $jumbotron-bg: white;
        MAIN PAGE CONTENT
 -------------------------------------------------- */
 
+/*#237DD1 blue button*/
+
 html {
   position: relative;
   min-height: 100%;
@@ -46,7 +57,7 @@ html {
 /*padding to help with navbar*/
 body {
   font-family: 'Lato', sans-serif;
-  background: #EFEFEB;
+  background: #DFDBDF;
   color: #333333;
   padding-top: 70px;
   margin-bottom: 80px;
@@ -89,10 +100,14 @@ body {
 
 .listing-title {
   display: block;
-  color: #666;
+  color: $purple;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.shadow {
+  box-shadow: 4px 6px 5px #888888; /*right, bottom, how long shadow, color*/
 }
 
 /* -------------------------------------------------
@@ -103,14 +118,28 @@ body {
   width: 100%;
   height: 350px;
 }
+
 #show-jumbo {
-  p {
-    font-size: 16px;
-  }
-  padding-top: 10px;
+  padding-top: 1px;
   padding-left: 30px;
-  padding-bottom: 15px;
+  padding-bottom: 1px;
+  hr {
+    margin-top: -2px;
+    margin-bottom: 8px;
+    padding: 0px;
+  }
+  .pink {
+    color: $purple;
+    font-weight: bold;
+  }
+  p {
+    font-size: 17px;
+  }
+  .pink-words {
+    color: #EA4D88;
+  }
 }
+
 #sidebar {
   padding-top: 3px;
 }
@@ -138,12 +167,12 @@ button.close {
 
 .total-num {
   margin: 0 auto 0 auto;
-  padding-top: 30px;
-  height: 100px;
-  width: 100px;
+  padding-top: 65px;
+  height: 165px;
+  width: 165px;
   border-radius: 50%;
   background: white;
-  color: red;
+  color: $red;
 }
 
  /* -------------------------------------------------
@@ -170,8 +199,8 @@ button.close {
 -------------------------------------------------- */
 
 .footer {
-  background: #EFEFEB;
-  color: #333333;
+  background: $purple;
+  color: #E9E9E9;
   width: 100%;
   height: 55px;
   position: absolute;
